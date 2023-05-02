@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <p>Webcam</p>
+        <img id="image">
+
+        <!-- for express -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script> -->
+
+        <!-- for nestjs -->
+        <script src="/socket.io/socket.io.js"></script>
+
+        <script>
+            const socket = io('http://localhost:3000/app');
+            console.log('socket', socket);
+            socket.on('opencvView', (image) => {
+                const imageElm = document.getElementById('image');
+                imageElm.src = `data:image/jpeg;base64,${image}`
+            })
+        </script>
+</body>
+</html>
